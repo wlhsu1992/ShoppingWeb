@@ -1,0 +1,40 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Web;
+
+namespace ShoppingWeb.Models
+{
+    public class tOrderDetail
+    {
+        [DisplayName("訂單明細編號")]
+        [Required]
+        public int fId { get; set; }
+
+        [DisplayName("訂單編號")]
+        [Required]
+        public int fOrderId { get; set; }
+
+        [DisplayName("產品編號")]
+        [Required]
+        public int fPId { get; set; }
+
+        [DisplayName("品名")]
+        [Required]
+        public int fName { get; set; }
+
+        [DisplayName("單價")]
+        [Required]
+        public int fPrice { get; set; }
+
+        [DisplayName("訂購數量")]
+        [Required]
+        public int fQty { get; set; }
+
+        [DisplayName("是否為訂單")]
+        [Required]
+        public int fIsApproved { get; set; }
+    }
+}
