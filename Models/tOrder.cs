@@ -13,6 +13,10 @@ namespace ShoppingWeb.Models
         [Required]
         public int fId { get; set; }
 
+        [DisplayName("訂單明細編號")]
+        [Required]
+        public int fOrderDetailId { get; set; }
+
         [DisplayName("會員編號")]
         [Required]
         public int fMId { get; set; }
