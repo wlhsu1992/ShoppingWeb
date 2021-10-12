@@ -1,10 +1,6 @@
 ﻿using ShoppingWeb.Models;
 using ShoppingWeb.Models.Interface;
 using ShoppingWeb.Models.Repository;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace ShoppingWeb.Controllers
@@ -36,7 +32,6 @@ namespace ShoppingWeb.Controllers
             
             // 檢查會員帳號是否重複
             if (memberRepository.Get(pMember.fUserId) is null) {
-                // 新增會員
                 memberRepository.Create(pMember);
                 return RedirectToAction("Login");
             } else {
@@ -48,6 +43,12 @@ namespace ShoppingWeb.Controllers
         public ActionResult Login()
         {
             return View();
+        }
+
+        public ActionResult Logout()
+        {
+            Session["Member"] = null;
+            return RedirectToAction("Index","Home");
         }
 
         [HttpPost]
