@@ -21,7 +21,7 @@ namespace ShoppingWeb.Controllers
         // GET: Member
         public ActionResult Index()
         {
-            return View();
+            return RedirectToAction("Index","Home");
         }
 
         public ActionResult Register()
@@ -48,6 +48,19 @@ namespace ShoppingWeb.Controllers
         public ActionResult Login()
         {
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult Login(string userId, string pwd)
+        {
+            var member = memberRepository.Get(userId, pwd);
+            if(member is null)
+            {
+                ViewBag.Message = "帳號密碼輸入錯誤";
+                return View();
+            }
+            Session["Member"] = member;
+            return RedirectToAction("Index","Home");
         }
     }
 }

@@ -16,6 +16,8 @@ namespace ShoppingWeb.Models.Interface
 
         tMember Get(string userId);
 
+        tMember Get(string userId, string pwd);
+
         IEnumerable<tMember> GetAll();
     }
 }

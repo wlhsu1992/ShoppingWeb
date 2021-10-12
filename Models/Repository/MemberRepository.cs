@@ -44,6 +44,18 @@ namespace ShoppingWeb.Models.Repository
 
         }
 
+        public tMember Get(string userId, string pwd)
+        {
+            SqlCommand cmd = new SqlCommand();
+
+            cmd.Parameters.Add(new SqlParameter("@UserId", SqlDbType.NVarChar));
+            cmd.Parameters.Add(new SqlParameter("@Pwd", SqlDbType.NVarChar));
+            cmd.Parameters["@UserId"].Value = userId;
+            cmd.Parameters["@Pwd"].Value = pwd;
+
+            return MSSQLProvider.ToList<tMember>(MSSQLProvider.QueryCollection(cmd, "sp_get_memberLogin")).FirstOrDefault();
+        }
+
         public IEnumerable<tMember> GetAll()
         {
             throw new NotImplementedException();
