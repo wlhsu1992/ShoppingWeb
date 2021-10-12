@@ -18,7 +18,9 @@ namespace ShoppingWeb.Controllers
         public ActionResult Index()
         {
             var products = this.productRepository.GetAll();
-            return View(products);
+
+            if(Session["Member"] is null) return View("Index", "_Layout", products);
+            else  return View("Index", "_LayoutMember", products);
         }
     }
 }

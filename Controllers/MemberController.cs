@@ -59,6 +59,7 @@ namespace ShoppingWeb.Controllers
                 ViewBag.Message = "帳號密碼輸入錯誤";
                 return View();
             }
+            Session["Greeting"] = $"你好 {member.fName}";
             Session["Member"] = member;
             return RedirectToAction("Index","Home");
         }
