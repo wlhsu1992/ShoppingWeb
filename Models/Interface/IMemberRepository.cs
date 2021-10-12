@@ -14,7 +14,7 @@ namespace ShoppingWeb.Models.Interface
 
         void Delete(tMember instance);
 
-        tMember Get(int categoryID);
+        tMember Get(string userId);
 
         IEnumerable<tMember> GetAll();
     }

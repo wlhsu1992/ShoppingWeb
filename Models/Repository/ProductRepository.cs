@@ -30,9 +30,7 @@ namespace ShoppingWeb.Models.Repository
         {
             MSSQLProvider mp = new MSSQLProvider();
             SqlCommand cmd = new SqlCommand();
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "sp_get_products";
-            return mp.ToList<tProduct>(mp.SQLQuery(cmd));
+            return MSSQLProvider.ToList<tProduct> (MSSQLProvider.QueryCollection(cmd, "sp_get_products"));
         }
 
         public void Update(tProduct instance)

@@ -14,11 +14,13 @@ namespace ShoppingWeb.DAL
     {
         private static string constr = ConfigurationManager.ConnectionStrings["localDB"].ConnectionString;
 
-        public DataTable SQLQuery(SqlCommand cmd)
+        public static DataTable QueryCollection(SqlCommand cmd, string spName)
         {
             using (SqlConnection con = new SqlConnection(constr))
             {
                 cmd.Connection = con;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = spName;
                 ///設置Command
                 SqlDataAdapter adp = new SqlDataAdapter(cmd);
                 DataSet ds = new DataSet();
@@ -27,12 +29,39 @@ namespace ShoppingWeb.DAL
             }
         }
 
+        public static DataRow Query(SqlCommand cmd, string spName)
+        {
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                cmd.Connection = con;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = spName;
+                ///設置Command
+                SqlDataAdapter adp = new SqlDataAdapter(cmd);
+                DataSet ds = new DataSet();
+                adp.Fill(ds);
+                return ds.Tables[0].Rows[0];
+            }
+        }
+
+        public static int ExecuteNonQuery(SqlCommand cmd, string spName)
+        {
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                cmd.Connection = con;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = spName;
+                con.Open();
+                return cmd.ExecuteNonQuery();
+            }
+        }
+
         /// <summary>
         /// 將DataTable轉為指定DTO物件的List集合
         /// </summary>
         /// <typeparam name="TResult">DTO</typeparam>
         /// <returns></returns>
-        public List<TResult> ToList<TResult>(DataTable dt) where TResult : class, new()
+        public static List<TResult> ToList<TResult>(DataTable dt) where TResult : class, new()
         {
             List<PropertyInfo> prlist = new List<PropertyInfo>();
             // 取得TResult的類型實例反射的入口
