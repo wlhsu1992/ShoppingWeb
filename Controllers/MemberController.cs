@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ShoppingWeb.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,6 +11,17 @@ namespace ShoppingWeb.Controllers
     {
         // GET: Member
         public ActionResult Index()
+        {
+            return View();
+        }
+
+        public ActionResult Register()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Register(tMember pMember)
         {
             return View();
         }

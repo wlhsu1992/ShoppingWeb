@@ -17,6 +17,7 @@ namespace ShoppingWeb.Models
 
         [DisplayName("密碼")]
         [Required]
+        [PasswordPropertyText]
         public string fPwd { get; set; }
 
         [DisplayName("姓名")]
@@ -24,7 +25,7 @@ namespace ShoppingWeb.Models
         public string fName { get; set; }
 
 
-        [DisplayName("姓名")]
+        [DisplayName("信箱")]
         [Required]
         [EmailAddress]
         public string fEmail { get; set; }
