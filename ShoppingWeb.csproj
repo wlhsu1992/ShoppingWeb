@@ -121,11 +121,10 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Models\DAO\MSSQLProvider.cs" />
+    <Compile Include="Models\SQLProvider\MSSQLProvider.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\DAO\ProductDAO.cs" />
     <Compile Include="Models\Interface\IMemberRepository.cs" />
     <Compile Include="Models\Interface\IProductRepository.cs" />
     <Compile Include="Models\Repository\MemberRepository.cs" />
@@ -145,6 +144,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Img\商品.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />

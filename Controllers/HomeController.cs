@@ -17,7 +17,8 @@ namespace ShoppingWeb.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            var products = this.productRepository.GetAll();
+            return View(products);
         }
 
         public ActionResult About()
