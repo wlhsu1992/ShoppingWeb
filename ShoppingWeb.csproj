@@ -121,9 +121,19 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Models\DAO\MSSQLProvider.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\DAO\ProductDAO.cs" />
+    <Compile Include="Models\Interface\IMemberRepository.cs" />
+    <Compile Include="Models\Interface\IProductRepository.cs" />
+    <Compile Include="Models\Repository\MemberRepository.cs" />
+    <Compile Include="Models\Repository\ProductRepository.cs" />
+    <Compile Include="Models\tMember.cs" />
+    <Compile Include="Models\tOrder.cs" />
+    <Compile Include="Models\tOrderDetail.cs" />
+    <Compile Include="Models\tProduct.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -165,7 +175,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
