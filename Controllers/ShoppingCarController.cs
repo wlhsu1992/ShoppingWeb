@@ -39,5 +39,12 @@ namespace ShoppingWeb.Controllers
             }
             return RedirectToAction("Index", "Home");
         }
+
+        public ActionResult DeleteCar(int orderDetailId)
+        {
+            string userId = (Session["Member"] as tMember).fUserId;
+            orderRepository.DeletShoppingCar(orderDetailId, userId);
+            return RedirectToAction("Index");
+        }
     }
 }

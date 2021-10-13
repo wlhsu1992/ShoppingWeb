@@ -15,5 +15,7 @@ namespace ShoppingWeb.Models.Interface
         void UpdateOrderDetailQty(int pId, string userId);
 
         List<tOrderDetail> GetShoppingCar(string userId, bool isApproved = false);
+
+        void DeletShoppingCar(int orderDetailId, string userId, bool isApproved = false);
     }
 }

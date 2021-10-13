@@ -26,7 +26,7 @@
             <td>@Html.DisplayFor(modelItem => item.fQty) </td>
             <td>@(item.fIsApproved == true ? '是': '否')</td>
             <td>
-                <a href="@Url.Action("DeleteCar")?fId=@item.fId"
+                <a href="@Url.Action("DeleteCar")?orderDetailId=@item.fId"
                    class="btn btn-danger">刪除購物車</a>
             </td>
         </tr>
