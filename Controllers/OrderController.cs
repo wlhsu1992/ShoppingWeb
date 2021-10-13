@@ -20,5 +20,11 @@ namespace ShoppingWeb.Controllers
             List<tOrder> orders = orderRepository.GetOrder(userId);
             return View(orders);
         }
+
+        public ActionResult OrderDetail(int orderId)
+        {
+            List<tOrderDetail> orderDeatails = orderRepository.GetOrderDetails(orderId);
+            return View(orderDeatails);
+        }
     }
 }

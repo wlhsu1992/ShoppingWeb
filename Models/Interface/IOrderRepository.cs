@@ -12,6 +12,8 @@ namespace ShoppingWeb.Models.Interface
 
         List<tOrder> GetOrder(string userId);
 
+        List<tOrderDetail> GetOrderDetails(int orderId);
+
         void AddOrderDetail(int pId, string userId, int qty=1);
 
         int CreaetOrder(tOrder order);
