@@ -12,6 +12,10 @@ namespace ShoppingWeb.Models.Interface
 
         void AddOrderDetail(int pId, string userId, int qty=1);
 
+        int CreaetOrder(tOrder order);
+
+        void UpdateOrderDetail(string userId, int orderId, bool IsApproved);
+
         void UpdateOrderDetailQty(int pId, string userId);
 
         List<tOrderDetail> GetShoppingCar(string userId, bool isApproved = false);

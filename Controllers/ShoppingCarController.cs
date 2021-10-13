@@ -46,5 +46,25 @@ namespace ShoppingWeb.Controllers
             orderRepository.DeletShoppingCar(orderDetailId, userId);
             return RedirectToAction("Index");
         }
+
+        public ActionResult Checkout(string receiver, string email, string address)
+        {
+            string userId = (Session["Member"] as tMember).fUserId;
+
+            // 建立訂單主檔資料
+            tOrder order = new tOrder
+            {
+                fUserId = userId,
+                fReceiver = receiver,
+                fEmail = email,
+                fAddress = address,
+            };
+            var orderId = orderRepository.CreaetOrder(order);
+
+            // 更新訂單明細訂購狀態
+            orderRepository.UpdateOrderDetail(userId, orderId, true);
+
+            return RedirectToAction("Index", "Order");
+        }
     }
 }

@@ -40,6 +40,37 @@ namespace ShoppingWeb.Models.Repository
             MSSQLProvider.ExecuteNonQuery(cmd, "sp_add_orderDetail");
         }
 
+        public int CreaetOrder(tOrder order)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.Parameters.Add(new SqlParameter("@UserId", SqlDbType.NVarChar));
+            cmd.Parameters.Add(new SqlParameter("@Receiver", SqlDbType.NVarChar));
+            cmd.Parameters.Add(new SqlParameter("@Email", SqlDbType.NVarChar));
+            cmd.Parameters.Add(new SqlParameter("@Address", SqlDbType.NVarChar));
+            cmd.Parameters["@UserId"].Value = order.fUserId;
+            cmd.Parameters["@Receiver"].Value = order.fReceiver;
+            cmd.Parameters["@Email"].Value = order.fEmail;
+            cmd.Parameters["@Address"].Value = order.fAddress;
+
+            cmd.Parameters.Add(new SqlParameter("@RETURN_VALUE", SqlDbType.Int));
+            cmd.Parameters["@RETURN_VALUE"].Direction = ParameterDirection.ReturnValue;
+
+            MSSQLProvider.ExecuteNonQuery(cmd, "sp_create_order");
+            return (int)cmd.Parameters["@RETURN_VALUE"].Value;
+        }
+
+        public void UpdateOrderDetail(string userId, int orderId, bool IsApproved)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.Parameters.Add(new SqlParameter("@UserId", SqlDbType.NVarChar));
+            cmd.Parameters.Add(new SqlParameter("@OrderId", SqlDbType.Int));
+            cmd.Parameters.Add(new SqlParameter("@IsApproved", SqlDbType.Bit));
+            cmd.Parameters["@UserId"].Value = userId;
+            cmd.Parameters["@OrderId"].Value = orderId;
+            cmd.Parameters["@IsApproved"].Value = IsApproved;
+            MSSQLProvider.ExecuteNonQuery(cmd, "sp_update_orderDetail");
+        }
+
         public void UpdateOrderDetailQty(int pId, string userId)
         {
             SqlCommand cmd = new SqlCommand();
