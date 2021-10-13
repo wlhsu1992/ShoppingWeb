@@ -8,11 +8,12 @@ namespace ShoppingWeb.Models.Interface
 {
     public interface IOrderRepository
     {
-        tProduct GetShoppingCarProduct(int pId, string userId, bool isApproved);
+        tProduct GetShoppingCarProduct(int pId, string userId, bool isApproved = false);
 
         void AddOrderDetail(int pId, string userId, int qty=1);
 
         void UpdateOrderDetailQty(int pId, string userId);
 
+        List<tOrderDetail> GetShoppingCar(string userId, bool isApproved = false);
     }
 }

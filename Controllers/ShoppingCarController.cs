@@ -16,7 +16,10 @@ namespace ShoppingWeb.Controllers
         // GET: ShoppingCar
         public ActionResult Index()
         {
-            return View();
+            // 取得使用者購物車資訊
+            string userId = (Session["Member"] as tMember).fUserId;
+            var orderDetail = orderRepository.GetShoppingCar(userId);
+            return View("index", "_LayoutMember", orderDetail);
         }
 
         public ActionResult AddCar(int pId)

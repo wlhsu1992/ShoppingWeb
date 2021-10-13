@@ -53,5 +53,18 @@ namespace ShoppingWeb.Models.Repository
 
             MSSQLProvider.ExecuteNonQuery(cmd, "sp_update_orderDetailQty");
         }
+
+        public List<tOrderDetail> GetShoppingCar(string userId, bool isApproved = false)
+        {
+            SqlCommand cmd = new SqlCommand();
+
+            cmd.Parameters.Add(new SqlParameter("@UserId", SqlDbType.NVarChar));
+            cmd.Parameters.Add(new SqlParameter("@IsApproved", SqlDbType.Bit));
+
+            cmd.Parameters["@UserId"].Value = userId;
+            cmd.Parameters["@IsApproved"].Value = isApproved;
+
+            return MSSQLProvider.ToList<tOrderDetail>(MSSQLProvider.QueryCollection(cmd, "sp_get_shoppingCar"));
+        }
     }
 }
