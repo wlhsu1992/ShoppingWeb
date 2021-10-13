@@ -1,4 +1,7 @@
-﻿using System;
+﻿using ShoppingWeb.Models;
+using ShoppingWeb.Models.Interface;
+using ShoppingWeb.Models.Repository;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,10 +11,14 @@ namespace ShoppingWeb.Controllers
 {
     public class OrderController : Controller
     {
+        private IOrderRepository orderRepository = new OrderRepository();
+
         // GET: Order
         public ActionResult Index()
         {
-            return View();
+            var userId = (Session["Member"] as tMember).fUserId;
+            List<tOrder> orders = orderRepository.GetOrder(userId);
+            return View(orders);
         }
     }
 }

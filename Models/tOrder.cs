@@ -19,10 +19,10 @@ namespace ShoppingWeb.Models
 
         [DisplayName("收件人姓名")]
         [Required]
-        [EmailAddress]
         public string fReceiver { get; set; }
 
         [DisplayName("收件人信箱")]
+        [EmailAddress]
         [Required]
         public string fEmail { get; set; }
 

@@ -26,6 +26,14 @@ namespace ShoppingWeb.Models.Repository
             return MSSQLProvider.ToList<tProduct>(MSSQLProvider.QueryCollection(cmd, "sp_get_shoppingCarProduct")).FirstOrDefault();
         }
 
+        public List<tOrder> GetOrder(string userId)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.Parameters.Add(new SqlParameter("@UserId", SqlDbType.NVarChar));
+            cmd.Parameters["@UserId"].Value = userId;
+            return MSSQLProvider.ToList<tOrder>(MSSQLProvider.QueryCollection(cmd, "sp_get_order"));
+        }
+
         public void AddOrderDetail(int pId, string userId, int qty = 1)
         {
             SqlCommand cmd = new SqlCommand();
