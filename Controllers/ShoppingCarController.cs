@@ -1,10 +1,6 @@
 ﻿using ShoppingWeb.Models;
 using ShoppingWeb.Models.Interface;
 using ShoppingWeb.Models.Repository;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace ShoppingWeb.Controllers
