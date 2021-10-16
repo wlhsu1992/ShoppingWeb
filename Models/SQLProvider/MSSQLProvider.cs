@@ -19,7 +19,7 @@ namespace ShoppingWeb.DAL
                 cmd.Connection = con;
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = spName;
-                ///設置Command
+
                 SqlDataAdapter adp = new SqlDataAdapter(cmd);
                 DataSet ds = new DataSet();
                 adp.Fill(ds);
@@ -34,7 +34,7 @@ namespace ShoppingWeb.DAL
                 cmd.Connection = con;
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = spName;
-                ///設置Command
+
                 SqlDataAdapter adp = new SqlDataAdapter(cmd);
                 DataSet ds = new DataSet();
                 adp.Fill(ds);
@@ -50,34 +50,8 @@ namespace ShoppingWeb.DAL
                 cmd.Connection = con;
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = spName;
-                return cmd.ExecuteNonQuery();
-            }
-        }
 
-        public static bool ExecuteMultiNonQuery(List<SqlCommand> cmds, string spName)
-        {
-            using (SqlConnection con = new SqlConnection(constr))
-            {
-                con.Open();
-                SqlTransaction tran = con.BeginTransaction();
-                try
-                {
-                    foreach (var cmd in cmds)
-                    {
-                        cmd.Connection = con;
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.CommandText = spName;
-                        cmd.Transaction = tran;
-                        cmd.ExecuteNonQuery();
-                    }
-                    tran.Commit();
-                    return true;
-                }
-                catch(Exception)
-                {
-                    tran.Rollback();
-                    return false;
-                }
+                return cmd.ExecuteNonQuery();
             }
         }
 

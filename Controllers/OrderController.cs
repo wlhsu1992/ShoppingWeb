@@ -13,7 +13,6 @@ namespace ShoppingWeb.Controllers
     {
         private IOrderRepository orderRepository = new OrderRepository();
 
-        // GET: Order
         public ActionResult Index()
         {
             var userId = (Session["Member"] as tMember).fUserId;

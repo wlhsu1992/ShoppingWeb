@@ -27,11 +27,6 @@ namespace ShoppingWeb.Models.Repository
             MSSQLProvider.ExecuteNonQuery(cmd, "sp_add_member");
         }
 
-        public void Delete(tMember instance)
-        {
-            throw new NotImplementedException();
-        }
-
         public tMember Get(string userId)
         {
             SqlCommand cmd = new SqlCommand();
@@ -53,16 +48,6 @@ namespace ShoppingWeb.Models.Repository
             cmd.Parameters["@Pwd"].Value = pwd;
 
             return MSSQLProvider.ToList<tMember>(MSSQLProvider.QueryCollection(cmd, "sp_get_memberLogin")).FirstOrDefault();
-        }
-
-        public IEnumerable<tMember> GetAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Update(tMember instance)
-        {
-            throw new NotImplementedException();
         }
     }
 }

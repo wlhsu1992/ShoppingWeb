@@ -10,14 +10,9 @@ namespace ShoppingWeb.Models.Interface
     {
         void Create(tMember instance);
 
-        void Update(tMember instance);
-
-        void Delete(tMember instance);
-
         tMember Get(string userId);
 
         tMember Get(string userId, string pwd);
 
-        IEnumerable<tMember> GetAll();
     }
 }

@@ -8,13 +8,8 @@ namespace ShoppingWeb.Models.Interface
 {
     public interface IProductRepository
     {
-        void Create(tProduct instance);
 
         void Update(tProduct instance);
-
-        void Delete(tProduct instance);
-
-        tProduct Get(int categoryID);
 
         List<tProduct> GetAll();
     }

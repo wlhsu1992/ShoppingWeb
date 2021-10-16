@@ -11,21 +11,6 @@ namespace ShoppingWeb.Models.Repository
 {
     public class ProductRepository : IProductRepository
     {
-        public void Create(tProduct instance)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Delete(tProduct instance)
-        {
-            throw new NotImplementedException();
-        }
-
-        public tProduct Get(int productID)
-        {
-            throw new NotImplementedException();
-        }
-
         public List<tProduct> GetAll()
         {
             MSSQLProvider mp = new MSSQLProvider();

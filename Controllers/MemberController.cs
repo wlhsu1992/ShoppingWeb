@@ -7,14 +7,8 @@ namespace ShoppingWeb.Controllers
 {
     public class MemberController : Controller
     {
-        private IMemberRepository memberRepository;
-        public MemberController()
-        {
-            this.memberRepository = new MemberRepository();
-        }
+        private IMemberRepository memberRepository = new MemberRepository();
 
-
-        // GET: Member
         public ActionResult Index()
         {
             return RedirectToAction("Index","Home");
@@ -55,12 +49,10 @@ namespace ShoppingWeb.Controllers
         public ActionResult Login(string userId, string pwd)
         {
             var member = memberRepository.Get(userId, pwd);
-            if(member is null)
-            {
+            if(member is null) {
                 ViewBag.Message = "帳號密碼輸入錯誤";
                 return View();
             }
-            Session["Greeting"] = $"你好 {member.fName}";
             Session["Member"] = member;
             return RedirectToAction("Index","Home");
         }

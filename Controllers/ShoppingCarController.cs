@@ -9,7 +9,6 @@ namespace ShoppingWeb.Controllers
     {
         private IOrderRepository orderRepository = new OrderRepository();
 
-        // GET: ShoppingCar
         public ActionResult Index()
         {
             // 取得使用者購物車資訊
@@ -20,17 +19,16 @@ namespace ShoppingWeb.Controllers
 
         public ActionResult AddCar(int pId)
         {
-            // Session取得會員帳號並指定給 fUserId
             string userId = (Session["Member"] as tMember).fUserId;
 
-            // 判斷商品是否以在購物車中
             var product = orderRepository.GetShoppingCarProduct(pId, userId, false);
-
-            if (product is null) { //不在購物車中
-                orderRepository.AddOrderDetail(pId, userId);
+            
+            // 判斷商品是否以在購物車中
+            if (product is null) { 
                 // 將產品資料加入到訂單明細中
+                orderRepository.AddOrderDetail(pId, userId);
             } else {
-                // 將該訂單訂購產品數量+1
+                // 修改訂單訂購產品數量+1
                 orderRepository.UpdateOrderDetailQty(pId, userId);
             }
             return RedirectToAction("Index", "Home");
@@ -47,7 +45,6 @@ namespace ShoppingWeb.Controllers
         {
             string userId = (Session["Member"] as tMember).fUserId;
 
-            // 建立訂單主檔資料
             tOrder order = new tOrder
             {
                 fUserId = userId,
