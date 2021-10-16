@@ -10,7 +10,7 @@ namespace ShoppingWeb.DAL
 {
     public class MSSQLProvider
     {
-        private static string constr = ConfigurationManager.ConnectionStrings["localDB"].ConnectionString;
+        private static string constr = ConfigurationManager.ConnectionStrings["azureDB"].ConnectionString;
 
         public static DataTable QueryCollection(SqlCommand cmd, string spName)
         {
@@ -89,11 +89,8 @@ namespace ShoppingWeb.DAL
         public static List<TResult> ToList<TResult>(DataTable dt) where TResult : class, new()
         {
             List<PropertyInfo> prlist = new List<PropertyInfo>();
-            // 取得TResult的類型實例反射的入口
             Type t = typeof(TResult);
-            // 獲得TResult所有public屬性，並找出TResult屬性和DataTable屬性名稱相同的屬性(PropertyInfo)並加入到屬性列表
             Array.ForEach<PropertyInfo>(t.GetProperties(), p => { if (dt.Columns.IndexOf(p.Name) != -1) prlist.Add(p); });
-            // 建立返回的集合
             List<TResult> oblist = new List<TResult>();
             
             foreach(DataRow row in dt.Rows)
