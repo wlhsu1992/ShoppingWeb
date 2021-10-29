@@ -17,7 +17,7 @@ namespace ShoppingWeb.Controllers
         {
             var userId = (Session["Member"] as tMember).fUserId;
             List<tOrder> orders = orderRepository.GetOrder(userId);
-            return View(orders);
+            return View("index", "_LayoutMember", orders);
         }
 
         public ActionResult OrderDetail(int orderId)
