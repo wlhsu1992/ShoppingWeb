@@ -1,9 +1,9 @@
 # [專案功能說明]
-使用ASP.NET MVC建立簡易電商網站：包含會員機制、產品列表、購物車增/刪/查詢、訂單查詢等功能
+使用ASP.NET MVC建立簡易電商網站：包含會員機制、產品列表、購物車增/刪/查詢、訂單查詢等功能。<br/>
 [網站部署於Azure](https://demoservice.azurewebsites.net/)
 
 # [網站首頁介面]
-<img src="./網站介面.png">
+<img src="./網站介面.png">Cancel changes
 
 # [專案架構]
 1. 使用ASP.NET MVC架構進行撰寫。
