@@ -3,7 +3,7 @@
 [網站部署於Azure](https://demoservice.azurewebsites.net/)
 
 # [網站首頁介面]
-<img src="./網站介面.png">Cancel changes
+<img src="./網站介面.png">
 
 # [專案架構]
 1. 使用ASP.NET MVC架構進行撰寫。
