@@ -3,8 +3,9 @@
 [網站部署於Azure](https://demoservice.azurewebsites.net/)
 
 # [專案架構]
-1. 使用ASP.NET MVC架構進行撰寫。
-2. 資料庫使用MSSQL。使用 ADO.NET 並通過Store Procedure進行資料庫存取。
+1. 使用Session判斷會員是否登入。
+2. 使用資料庫正規畫設計資料表使用MSSQL。使用 ADO.NET 並通過Store Procedure進行資料庫存取。
+3. 專案架構使用Repository Pattern將資料庫串接層分離。
 
 **未登入時系統功能架構**<br/>
 <img src="./未登入前功能列表.png">
